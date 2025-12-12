@@ -3,141 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <title>KIA Dashboard</title>
-
     <style>
-        body {
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f5f6fa;
-        }
-
-        /* SIDEBAR */
-        .sidebar {
-            width: 230px;
-            height: 100%;
-            background: #2c3e50;
-            position: fixed;
-            left: 0;
-            top: 0;
-            padding-top: 20px;
-            color: white;
-        }
-
-        .sidebar h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 20px;
-            letter-spacing: 2px;
-        }
-
-        .sidebar a {
-            display: block;
-            padding: 14px 20px;
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-        }
-
-        .sidebar a:hover {
-            background: #34495e;
         }
 
         /* MAIN CONTENT */
         .main {
-            margin-left: 230px;
-            padding: 20px;
+            margin-left: 260px;
+            padding: 30px;
+            min-height: 100vh;
         }
 
         /* HEADER */
         .header {
             background: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+            padding: 25px 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .header h1 {
             margin: 0;
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 28px;
+            font-weight: 600;
+            color: #2c3e50;
         }
 
         /* DASHBOARD CARDS */
         .cards {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
 
         .card {
             background: white;
-            flex: 1;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
-            box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 4px solid #3498db;
+            transition: transform 0.2s;
         }
 
         .card h3 {
-            margin: 0;
-            font-size: 18px;
-            color: #555;
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            color: #7f8c8d;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .card p {
-            font-size: 30px;
-            font-weight: bold;
-            margin-top: 10px;
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0;
             color: #2c3e50;
+        }
+
+        .card:nth-child(1) {
+            border-left-color: #3498db;
+        }
+
+        .card:nth-child(2) {
+            border-left-color: #2ecc71;
+        }
+
+        .card:nth-child(3) {
+            border-left-color: #f39c12;
+        }
+
+        .card:nth-child(4) {
+            border-left-color: #e74c3c;
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            .main {
+                margin-left: 0;
+                padding: 15px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card p {
+                font-size: 30px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- SIDEBAR -->
-   <div class="sidebar">
-    <h2>KIA SYSTEM</h2>
-
-    <a href="<?= site_url('dashboard') ?>">Dashboard</a>
-    <a href="<?= site_url('patients/mother') ?>">Data Ibu</a>
-    <a href="<?= site_url('patients/pregnancy') ?>">Kehamilan</a>
-    <a href="<?= site_url('patients/child') ?>"> Data Anak</a>
-    <a href="<?= site_url('medical/records') ?>">Medical Records</a>
-    <a href="<?= site_url('medical/diagnosis') ?>">Diagnosis</a>
-    <a href="<?= site_url('medical/treatments') ?>">Treatments</a>
-</div>
+    <!-- LOAD SIDEBAR COMPONENT -->
+    <?php $this->load->view('layout/sidebar'); ?>
 
     <!-- MAIN CONTENT -->
     <div class="main">
-        
-        <!-- HEADER -->
         <div class="header">
             <h1>Dashboard Utama</h1>
         </div>
 
-        <!-- STAT CARDS -->
         <div class="cards">
             <div class="card">
                 <h3>Total Patients</h3>
                 <p>120</p>
             </div>
-
             <div class="card">
                 <h3>Total Registrations</h3>
                 <p>87</p>
             </div>
-
             <div class="card">
                 <h3>Queue Today</h3>
                 <p>32</p>
             </div>
-
             <div class="card">
                 <h3>Medical Records</h3>
                 <p>140</p>
             </div>
         </div>
-
     </div>
 
 </body>
