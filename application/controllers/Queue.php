@@ -13,20 +13,17 @@ class Queue extends CI_Controller
         $this->load->model('Queue_model');
     }
 
-    // READ
     public function index()
     {
         $data['queue'] = $this->Queue_model->get_all();
         $this->load->view('queue/index', $data);
     }
 
-    // CREATE FORM
     public function create()
     {
         $this->load->view('queue/create');
     }
 
-    // CREATE PROCESS
     public function store()
     {
         $data = [
@@ -40,14 +37,12 @@ class Queue extends CI_Controller
         redirect('queue');
     }
 
-    // EDIT FORM
     public function edit($id)
     {
         $data['queue'] = $this->Queue_model->get_by_id($id);
         $this->load->view('queue/edit', $data);
     }
 
-    // UPDATE PROCESS
     public function update($id)
     {
         $data = [
@@ -60,7 +55,6 @@ class Queue extends CI_Controller
         redirect('queue');
     }
 
-    // DELETE
     public function delete($id)
     {
         $this->Queue_model->delete($id);
