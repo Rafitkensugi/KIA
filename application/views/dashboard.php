@@ -95,15 +95,17 @@
 <body>
 
     <!-- SIDEBAR -->
-    <div class="sidebar">
-        <h2>KIA SYSTEM</h2>
+   <div class="sidebar">
+    <h2>KIA SYSTEM</h2>
 
-        <a href="<?= site_url('dashboard') ?>">🏠 Dashboard</a>
-        <a href="<?= site_url('patients') ?>">🧑 Patients</a>
-        <a href="<?= site_url('registrations') ?>">📝 Registrations</a>
-        <a href="<?= site_url('queue') ?>">📋 Queue</a>
-        <a href="<?= site_url('medical') ?>">⚕️ Medical</a>
-    </div>
+    <a href="<?= site_url('dashboard') ?>">Dashboard</a>
+    <a href="<?= site_url('patients/mother') ?>">Data Ibu</a>
+    <a href="<?= site_url('patients/pregnancy') ?>">Kehamilan</a>
+    <a href="<?= site_url('patients/child') ?>"> Data Anak</a>
+    <a href="<?= site_url('medical/records') ?>">Medical Records</a>
+    <a href="<?= site_url('medical/diagnosis') ?>">Diagnosis</a>
+    <a href="<?= site_url('medical/treatments') ?>">Treatments</a>
+</div>
 
     <!-- MAIN CONTENT -->
     <div class="main">
