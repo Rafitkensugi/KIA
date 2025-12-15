@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Medical Record - KIA System</title>
+    <title>Tambah Kehamilan - KIA System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -43,33 +43,40 @@
 </head>
 <body>
 
+  
+
     <div class="main">
 
         <div class="page-header">
-            <h3>Edit Medical Record #<?= $record->record_id ?></h3>
+            <h3>Tambah Data Kehamilan</h3>
         </div>
 
         <div class="card">
             <div class="card-body">
-                <form action="<?= site_url('medical/records/update/'.$record->record_id) ?>" method="post">
+                <form method="post" action="<?= site_url('patients/pregnancy/store') ?>">
 
                     <div class="mb-3">
-                        <label class="form-label">Registration ID <span class="text-danger">*</span></label>
-                        <input type="number" name="reg_id" class="form-control" value="<?= $record->reg_id ?>" readonly>
+                        <label class="form-label">Ibu <span class="text-danger">*</span></label>
+                        <select name="mother_id" class="form-select" required>
+                            <option value="">-- Pilih Ibu --</option>
+                            <?php foreach($mothers as $m): ?>
+                                <option value="<?= $m->mother_id ?>"><?= $m->name ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="form-label">Tinggi Badan (cm)</label>
-                                <input type="number" name="height" class="form-control" step="0.1" min="0" value="<?= $record->height ?>">
+                                <label class="form-label">HPHT (Hari Pertama Haid Terakhir) <span class="text-danger">*</span></label>
+                                <input type="date" name="hpht" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="form-label">Berat Badan (kg)</label>
-                                <input type="number" name="weight" class="form-control" step="0.1" min="0" value="<?= $record->weight ?>">
+                                <label class="form-label">HPL (Hari Perkiraan Lahir) <span class="text-danger">*</span></label>
+                                <input type="date" name="hpl" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -77,39 +84,34 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label class="form-label">Tekanan Darah</label>
-                                <input type="text" name="blood_pressure" class="form-control" placeholder="120/80" value="<?= $record->blood_pressure ?>">
+                                <label class="form-label">Gravida (Total mengalamai kehamilan)</label>
+                                <input type="number" name="gravida" class="form-control" min="0">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label class="form-label">Denyut Nadi (bpm)</label>
-                                <input type="number" name="pulse" class="form-control" min="0" value="<?= $record->pulse ?>">
+                                <label class="form-label">Para</label>
+                                <input type="number" name="para" class="form-control" min="0">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label class="form-label">Suhu Tubuh (°C)</label>
-                                <input type="number" step="0.1" name="temperature" class="form-control" min="0" value="<?= $record->temperature ?>">
+                                <label class="form-label">Abortus</label>
+                                <input type="number" name="abortus" class="form-control" min="0">
                             </div>
                         </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Gejala</label>
-                        <textarea name="symptoms" class="form-control" rows="3"><?= $record->symptoms ?></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Catatan</label>
-                        <textarea name="notes" class="form-control" rows="3"><?= $record->notes ?></textarea>
+                        <textarea name="notes" class="form-control" rows="4"></textarea>
                     </div>
 
                     <div class="d-flex gap-2">
-                        <button type="submit" class="btn btn-primary">Update</button>
-                        <a href="<?= site_url('medical/records') ?>" class="btn btn-secondary">Batal</a>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="<?= site_url('patients/pregnancy') ?>" class="btn btn-secondary">Batal</a>
                     </div>
 
                 </form>
