@@ -2,122 +2,146 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clinic</title>
+    <title>KIA Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f6fa;
+        }
+
+        /* MAIN CONTENT */
+        .main {
+            margin-left: 260px;
+            padding: 30px;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        .header {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        /* DASHBOARD CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 4px solid #3498db;
+            transition: transform 0.2s;
+        }
+
+        .card h3 {
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            color: #7f8c8d;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card p {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .card:nth-child(1) {
+            border-left-color: #3498db;
+        }
+
+        .card:nth-child(2) {
+            border-left-color: #2ecc71;
+        }
+
+        .card:nth-child(3) {
+            border-left-color: #f39c12;
+        }
+
+        .card:nth-child(4) {
+            border-left-color: #e74c3c;
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            .main {
+                margin-left: 0;
+                padding: 15px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card p {
+                font-size: 30px;
+            }
+        }
+    </style>
 </head>
+<body>
 
-<body class="bg-light">
+    <!-- LOAD SIDEBAR COMPONENT -->
+    <?php $this->load->view('layout/sidebar'); ?>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Clinic</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Patients</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Appointments</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
-                </ul>
-            </div>  
-        </div>
-    </nav>
-
-    <!-- Content -->
-    <div class="container mt-4">
-
-        <h2 class="mb-4">Clinic Dashboard</h2>
-
-        <div class="row g-4">
-
-            <!-- Total Patients -->
-            <div class="col-md-4">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-primary">Total Patients</h5>
-                        <h2>120</h2>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Today's Appointments -->
-            <div class="col-md-4">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-success">Today's Appointments</h5>
-                        <h2>15</h2>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Doctors On Duty -->
-            <div class="col-md-4">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-warning">Doctors On Duty</h5>
-                        <h2>4</h2>
-                    </div>
-                </div>
-            </div>
-
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <div class="header">
+            <h1>Dashboard Utama</h1>
         </div>
 
-        <!-- Table -->
-        <div class="card shadow-sm border-0 mt-4">
-            <div class="card-header bg-white">
-                <h5 class="mb-0">Recent Appointments</h5>
+        <div class="cards">
+            <div class="card">
+                <h3>Total Patients</h3>
+                <p>120</p>
             </div>
-            <div class="card-body">
-
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Patient Name</th>
-                            <th>Date</th>
-                            <th>Doctor</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>2025-01-05</td>
-                            <td>Dr. Smith</td>
-                            <td><span class="badge bg-success">Completed</span></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Mary Jane</td>
-                            <td>2025-01-05</td>
-                            <td>Dr. Adams</td>
-                            <td><span class="badge bg-warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Robert Fox</td>
-                            <td>2025-01-04</td>
-                            <td>Dr. Lee</td>
-                            <td><span class="badge bg-danger">Cancelled</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-
+            <div class="card">
+                <h3>Total Registrations</h3>
+                <p>87</p>
+            </div>
+            <div class="card">
+                <h3>Queue Today</h3>
+                <p>32</p>
+            </div>
+            <div class="card">
+                <h3>Medical Records</h3>
+                <p>140</p>
             </div>
         </div>
-
     </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
