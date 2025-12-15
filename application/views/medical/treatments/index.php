@@ -65,7 +65,7 @@
 
         <div class="page-header">
             <h3>Daftar Antrian</h3>
-            <a href="<?= site_url('treatments/create') ?>" class="btn btn-primary">
+            <a href="<?= site_url('medical/treatments/create') ?>" class="btn btn-primary">
                 + Tambah perawatan
             </a>
         </div>
@@ -93,9 +93,9 @@
                                 <td><?= $t->cost ?></td>
                                 <td><?= $t->notes ?></td>
                                 <td>
-                                    <a href="<?= site_url('queue/edit/'.$q->queue_id) ?>" 
+                                    <a href="<?= site_url('medical/treatments/edit/'.$t->treatment_id) ?>" 
                                        class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="<?= site_url('queue/delete/'.$q->queue_id) ?>" 
+                                    <a href="<?= site_url('medical/treatments/delete/'.$t->treatment_id) ?>" 
                                        class="btn btn-sm btn-danger"
                                        onclick="return confirm('Yakin ingin menghapus antrian ini?')">Hapus</a>
                                 </td>
