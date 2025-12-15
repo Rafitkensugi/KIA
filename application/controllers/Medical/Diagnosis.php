@@ -16,12 +16,12 @@ class Diagnosis extends CI_Controller {
     public function index()
     {
         $data['diagnosis'] = $this->Diagnosis_model->get_all();
-        $this->load->view('diagnosis/index', $data);
+        $this->load->view('medical/diagnosis/index', $data);
     }
 
     public function create()
     {
-        $this->load->view('diagnosis/create');
+        $this->load->view('medical/diagnosis/create');
     }
 
     public function store()
@@ -35,13 +35,13 @@ class Diagnosis extends CI_Controller {
 
         $this->Diagnosis_model->insert($data);
 
-        redirect('diagnosis');
+        redirect('medical/diagnosis');
     }
 
     public function edit($id)
     {
         $data['item'] = $this->Diagnosis_model->get_by_id($id);
-        $this->load->view('diagnosis/edit', $data);
+        $this->load->view('medical/diagnosis/edit', $data);
     }
 
     public function update($id)
@@ -55,12 +55,12 @@ class Diagnosis extends CI_Controller {
 
         $this->Diagnosis_model->update($id, $data);
 
-        redirect('diagnosis');
+        redirect('medical/diagnosis');
     }
 
     public function delete($id)
     {
         $this->Diagnosis_model->delete($id);
-        redirect('diagnosis');
+        redirect('medical/diagnosis');
     }
 }
