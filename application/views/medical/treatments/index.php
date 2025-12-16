@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Anak - KIA System</title>
+    <title>Daftar treatments - KIA System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -64,9 +64,9 @@
     <div class="main">
 
         <div class="page-header">
-            <h3>Data Anak</h3>
-            <a href="<?= site_url('patients/child/create') ?>" class="btn btn-primary">
-                + Tambah Anak
+            <h3>Daftar Antrian</h3>
+            <a href="<?= site_url('medical/treatments/create') ?>" class="btn btn-primary">
+                + Tambah perawatan
             </a>
         </div>
 
@@ -76,45 +76,35 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>NIK</th>
-                            <th>Nama Anak</th>
-                            <th>Ibu</th>
-                            <th>Gender</th>
-                            <th>Tgl Lahir</th>
+                            <th>record ID</th>
+                            <th>treatment name</th>
+                            <th>cost</th>
+                            <th>notes</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($children)): ?>
-                            <?php foreach ($children as $c): ?>
+                        <?php if (!empty($treatments)): ?>
+                            <?php foreach ($treatments as $t): ?>
                             <tr>
-                                <td><?= $c->child_id ?></td>
-                                <td><?= $c->nik ?></td>
-                                <td><?= $c->name ?></td>
-                                <td><?= $c->mother_name ?></td>
+                                <td><?= $t->treatment_id ?></td>
+                                <td><?= $t->record_id ?></td>
+                                <td><strong><?= $t->treatment_name ?></strong></td>
+                                <td><?= $t->cost ?></td>
+                                <td><?= $t->notes ?></td>
                                 <td>
-                                    <?php if (strtolower($c->gender) == 'l' || strtolower($c->gender) == 'laki-laki'): ?>
-                                        <span class="badge bg-primary">Laki-laki</span>
-                                    <?php else: ?>
-                                        <span class="badge bg-danger">Perempuan</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td><?= date('d/m/Y', strtotime($c->birth_date)) ?></td>
-                                <td>
-                                    <a href="<?= site_url('patients/child/detail/'.$c->child_id) ?>" 
-                                       class="btn btn-sm btn-info text-white">Detail</a>
-                                    <a href="<?= site_url('patients/child/edit/'.$c->child_id) ?>" 
+                                    <a href="<?= site_url('medical/treatments/edit/'.$t->treatment_id) ?>" 
                                        class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="<?= site_url('patients/child/delete/'.$c->child_id) ?>" 
-                                       onclick="return confirm('Yakin ingin menghapus data ini?')"
-                                       class="btn btn-sm btn-danger">Hapus</a>
+                                    <a href="<?= site_url('medical/treatments/delete/'.$t->treatment_id) ?>" 
+                                       class="btn btn-sm btn-danger"
+                                       onclick="return confirm('Yakin ingin menghapus antrian ini?')">Hapus</a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="7" class="text-center text-muted py-4">
-                                    Belum ada data anak
+                                <td colspan="6" class="text-center text-muted py-4">
+                                    Tidak ada treatments
                                 </td>
                             </tr>
                         <?php endif; ?>

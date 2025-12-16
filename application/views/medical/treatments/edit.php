@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Antrian - KIA System</title>
+    <title>Edit Treatment - KIA System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -41,41 +42,47 @@
         }
     </style>
 </head>
-<body>
 
+<body>
 
     <div class="main">
 
         <div class="page-header">
-            <h3>Edit Antrian</h3>
+            <h3>Edit Treatment</h3>
         </div>
 
         <div class="card">
             <div class="card-body">
-                <form action="<?= site_url('queue/update/'.$queue->queue_id) ?>" method="post">
-                    
+                <!-- Action tanpa parameter, id dikirim via hidden input -->
+                <form action="<?= site_url('medical/treatments/update/' .$treatments->treatment_id) ?>" method="post">
+                    <input type="hidden" name="treatment_id" value="<?= $treatments->treatment_id ?>">
+
                     <div class="mb-3">
-                        <label class="form-label">Registration ID <span class="text-danger">*</span></label>
-                        <input type="number" name="reg_id" class="form-control" value="<?= $queue->reg_id ?>" required>
+                        <label class="form-label">Record ID <span class="text-danger">*</span></label>
+                        <input type="number" name="record_id" class="form-control"
+                            value="<?= $treatments->record_id ?>" required>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">No Antrian <span class="text-danger">*</span></label>
-                        <input type="number" name="queue_number" class="form-control" min="1" value="<?= $queue->queue_number ?>" required>
+                        <label class="form-label">Nama Treatment <span class="text-danger">*</span></label>
+                        <input type="text" name="treatment_name" class="form-control"
+                            value="<?= $treatments->treatment_name ?>" required>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Status <span class="text-danger">*</span></label>
-                        <select name="status" class="form-select" required>
-                            <option value="menunggu" <?= $queue->status == 'menunggu' ? 'selected' : '' ?>>Menunggu</option>
-                            <option value="dipanggil" <?= $queue->status == 'dipanggil' ? 'selected' : '' ?>>Dipanggil</option>
-                            <option value="selesai" <?= $queue->status == 'selesai' ? 'selected' : '' ?>>Selesai</option>
-                        </select>
+                        <label class="form-label">Biaya (Rp) <span class="text-danger">*</span></label>
+                        <input type="number" step="0.01" name="cost" class="form-control"
+                            value="<?= $treatments->cost ?>" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Catatan</label>
+                        <textarea name="notes" class="form-control" rows="3"><?= $treatments->notes ?></textarea>
                     </div>
 
                     <div class="d-flex gap-2">
                         <button type="submit" class="btn btn-primary">Update</button>
-                        <a href="<?= site_url('queue') ?>" class="btn btn-secondary">Kembali</a>
+                        <a href="<?= site_url('medical/treatments') ?>" class="btn btn-secondary">Kembali</a>
                     </div>
 
                 </form>
@@ -86,4 +93,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

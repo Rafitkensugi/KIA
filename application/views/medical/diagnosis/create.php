@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Antrian - KIA System</title>
+    <title>Tambah Diagnosis - KIA System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -46,35 +46,36 @@
     <div class="main">
 
         <div class="page-header">
-            <h3>Tambah Antrian</h3>
+            <h3>Tambah Diagnosis</h3>
         </div>
 
         <div class="card">
             <div class="card-body">
-                <form action="<?= site_url('queue/store') ?>" method="post">
-                    
+                <form action="<?php echo site_url('medical/diagnosis/store'); ?>" method="post">
+
                     <div class="mb-3">
-                        <label class="form-label">Registration ID <span class="text-danger">*</span></label>
-                        <input type="number" name="reg_id" class="form-control" required>
+                        <label class="form-label">Record ID <span class="text-danger">*</span></label>
+                        <input type="text" name="record_id" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">No Antrian <span class="text-danger">*</span></label>
-                        <input type="number" name="queue_number" class="form-control" min="1" required>
+                        <label class="form-label">Kode ICD-10 <span class="text-danger">*</span></label>
+                        <input type="text" name="icd10" class="form-control" placeholder="Contoh: A00.0" required>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Status <span class="text-danger">*</span></label>
-                        <select name="status" class="form-select" required>
-                            <option value="menunggu">Menunggu</option>
-                            <option value="dipanggil">Dipanggil</option>
-                            <option value="selesai">Selesai</option>
-                        </select>
+                        <label class="form-label">Nama Diagnosis <span class="text-danger">*</span></label>
+                        <input type="text" name="diagnosis_name" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Catatan</label>
+                        <textarea name="notes" class="form-control" rows="4"></textarea>
                     </div>
 
                     <div class="d-flex gap-2">
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="<?= site_url('queue') ?>" class="btn btn-secondary">Kembali</a>
+                        <a href="<?php echo site_url('medical/diagnosis'); ?>" class="btn btn-secondary">Kembali</a>
                     </div>
 
                 </form>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Anak - KIA System</title>
+    <title>Data Kehamilan - KIA System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -64,9 +64,9 @@
     <div class="main">
 
         <div class="page-header">
-            <h3>Data Anak</h3>
-            <a href="<?= site_url('patients/child/create') ?>" class="btn btn-primary">
-                + Tambah Anak
+            <h3>Data Kehamilan</h3>
+            <a href="<?= site_url('patients/pregnancy/create') ?>" class="btn btn-primary">
+                + Tambah Kehamilan
             </a>
         </div>
 
@@ -76,36 +76,32 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>NIK</th>
-                            <th>Nama Anak</th>
-                            <th>Ibu</th>
-                            <th>Gender</th>
-                            <th>Tgl Lahir</th>
+                            <th>Nama Ibu</th>
+                            <th>HPHT</th>
+                            <th>HPL</th>
+                            <th>Gravida</th>
+                            <th>Para</th>
+                            <th>Abortus</th>
+                            <th>Catatan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($children)): ?>
-                            <?php foreach ($children as $c): ?>
+                        <?php if (!empty($pregnancies)): ?>
+                            <?php foreach($pregnancies as $p): ?>
                             <tr>
-                                <td><?= $c->child_id ?></td>
-                                <td><?= $c->nik ?></td>
-                                <td><?= $c->name ?></td>
-                                <td><?= $c->mother_name ?></td>
+                                <td><?= $p->pregnancy_id ?></td>
+                                <td><?= $p->mother_name ?></td>
+                                <td><?= date('d/m/Y', strtotime($p->hpht)) ?></td>
+                                <td><?= date('d/m/Y', strtotime($p->hpl)) ?></td>
+                                <td><?= $p->gravida ?></td>
+                                <td><?= $p->para ?></td>
+                                <td><?= $p->abortus ?></td>
+                                <td><?= $p->notes ? $p->notes : '-' ?></td>
                                 <td>
-                                    <?php if (strtolower($c->gender) == 'l' || strtolower($c->gender) == 'laki-laki'): ?>
-                                        <span class="badge bg-primary">Laki-laki</span>
-                                    <?php else: ?>
-                                        <span class="badge bg-danger">Perempuan</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td><?= date('d/m/Y', strtotime($c->birth_date)) ?></td>
-                                <td>
-                                    <a href="<?= site_url('patients/child/detail/'.$c->child_id) ?>" 
-                                       class="btn btn-sm btn-info text-white">Detail</a>
-                                    <a href="<?= site_url('patients/child/edit/'.$c->child_id) ?>" 
+                                    <a href="<?= site_url('patients/pregnancy/edit/'.$p->pregnancy_id) ?>" 
                                        class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="<?= site_url('patients/child/delete/'.$c->child_id) ?>" 
+                                    <a href="<?= site_url('patients/pregnancy/delete/'.$p->pregnancy_id) ?>" 
                                        onclick="return confirm('Yakin ingin menghapus data ini?')"
                                        class="btn btn-sm btn-danger">Hapus</a>
                                 </td>
@@ -113,8 +109,8 @@
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="7" class="text-center text-muted py-4">
-                                    Belum ada data anak
+                                <td colspan="9" class="text-center text-muted py-4">
+                                    Belum ada data kehamilan
                                 </td>
                             </tr>
                         <?php endif; ?>
