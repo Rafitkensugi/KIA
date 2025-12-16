@@ -1,6 +1,6 @@
 <h2>Tambah Obat</h2>
 
-<form action="<?= base_url('index.php/drugs/store') ?>" method="post">
+<form action="<?= base_url('medical/drugs/store') ?>" method="post">
     <input type="text" name="drug_name" placeholder="Nama Obat" required><br><br>
     <input type="text" name="category" placeholder="Kategori"><br><br>
     <input type="text" name="unit" placeholder="Satuan"><br><br>

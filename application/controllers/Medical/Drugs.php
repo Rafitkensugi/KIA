@@ -13,13 +13,13 @@ class Drugs extends CI_Controller {
     public function index()
     {
         $data['drugs'] = $this->drug->get_all();
-        $this->load->view('drugs/index', $data);
+        $this->load->view('medical/drugs/index', $data);
     }
 
     // FORM TAMBAH
     public function create()
     {
-        $this->load->view('drugs/create');
+        $this->load->view('medical/drugs/create');
     }
 
     // SIMPAN DATA
@@ -37,14 +37,14 @@ class Drugs extends CI_Controller {
         ];
 
         $this->drug->insert($data);
-        redirect('drugs');
+        redirect('medical/drugs');
     }
 
     // FORM EDIT
     public function edit($id)
     {
         $data['drug'] = $this->drug->get_by_id($id);
-        $this->load->view('drugs/edit', $data);
+        $this->load->view('medical/drugs/edit', $data);
     }
 
     // UPDATE DATA
@@ -62,7 +62,7 @@ class Drugs extends CI_Controller {
         ];
 
         $this->drug->update($id, $data);
-        redirect('drugs');
+        redirect('medical/drugs');
     }
 
     // DETAIL
@@ -76,6 +76,6 @@ class Drugs extends CI_Controller {
     public function delete($id)
     {
         $this->drug->delete($id);
-        redirect('drugs');
+        redirect('medical/drugs');
     }
 }

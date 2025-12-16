@@ -1,6 +1,6 @@
 <h2>Edit Obat</h2>
 
-<form action="<?= base_url('index.php/drugs/update/'.$drug->drug_id) ?>" method="post">
+<form action="<?= base_url('medical/drugs/update/'.$drug->drug_id) ?>" method="post">
     <input type="text" name="drug_name" value="<?= $drug->drug_name ?>" required><br><br>
     <input type="text" name="category" value="<?= $drug->category ?>"><br><br>
     <input type="text" name="unit" value="<?= $drug->unit ?>"><br><br>

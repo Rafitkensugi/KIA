@@ -8,4 +8,4 @@
 <p><b>Stok Minimum:</b> <?= $drug->stock_minimum ?></p>
 <p><b>Dibuat:</b> <?= $drug->created_at ?></p>
 
-<a href="<?= base_url('index.php/drugs') ?>">Kembali</a>
+<a href="<?= base_url('medical/drugs') ?>">Kembali</a>

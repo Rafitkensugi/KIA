@@ -24,7 +24,7 @@
 
         .page-header h3 {
             margin: 0;
-            font-size: 22px;
+            font-   ze: 22px;
             color: #2c3e50;
         }
 
