@@ -11,11 +11,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .main {
-            margin-left: 260px;
-            padding: 30px;
-        }
-
         .page-header {
             background: white;
             padding: 20px;
@@ -48,6 +43,8 @@
                 width: 40%;
             }
         }
+
+        
     </style>
 </head>
 <body>

@@ -1,14 +1,16 @@
 <?php
-class Medical_record_model extends CI_Model {
+defined('BASEPATH') OR exit('No direct script access allowed');
 
+class Medical_records_model extends CI_Model
+{
     protected $table = 'medical_records';
 
-    public function getAll()
+    public function get_all()
     {
         return $this->db->get($this->table)->result();
     }
 
-    public function getById($id)
+    public function get_by_id($id)
     {
         return $this->db->get_where($this->table, ['record_id' => $id])->row();
     }
@@ -20,11 +22,13 @@ class Medical_record_model extends CI_Model {
 
     public function update($id, $data)
     {
-        return $this->db->where('record_id', $id)->update($this->table, $data);
+        return $this->db->where('record_id', $id)
+                        ->update($this->table, $data);
     }
 
     public function delete($id)
     {
-        return $this->db->where('record_id', $id)->delete($this->table);
+        return $this->db->where('record_id', $id)
+                        ->delete($this->table);
     }
 }
