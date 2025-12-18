@@ -10,7 +10,6 @@
     <h3 class="mb-3">Add New Immunization</h3>
 
     <form method="post" action="<?= site_url('immunizations/add'); ?>">
-
       <div class="mb-3">
         <label>Child ID</label>
         <input type="number" name="child_id" class="form-control" required>
