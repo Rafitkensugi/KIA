@@ -245,3 +245,23 @@ CREATE TABLE audit_logs (
     created_at DATETIME,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- -------------------------------------------------
+-- 19. menus
+-- -------------------------------------------------
+CREATE TABLE menus (
+    menu_id INT AUTO_INCREMENT PRIMARY KEY,
+    parent_id INT DEFAULT NULL,
+    menu_name VARCHAR(100),
+    menu_icon VARCHAR(50),
+    menu_url VARCHAR(150),
+    menu_order INT,
+    is_active TINYINT DEFAULT 1
+);
+-- -------------------------------------------------
+-- 20. role_menu
+-- -------------------------------------------------
+CREATE TABLE role_menus (
+    role_id INT,
+    menu_id INT
+);
